@@ -205,7 +205,7 @@
   gap: var(--space-m);
 }
 
-.font_title {
+.form_title {
   font-size: 27px;
   font-weight: var(--weight-title);
   color: var(--color-white);
