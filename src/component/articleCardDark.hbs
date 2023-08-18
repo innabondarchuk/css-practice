@@ -1,0 +1,11 @@
+<div class="article_image">
+  {{#each articles}}
+    <div class="img" id="{{id}}">
+      <img src="{{photo}}" alt="Article_image" class="img_photo">
+      {{#if isNew}}<span class="img_badge">New</span>{{/if}}
+      <h6 class="img_title">{{name}}</h6>
+      <p class="img_text">{{description}}</p>
+      <button type="submit" class="img_button">Read All</button>
+    </div>
+  {{/each}}
+</div>
