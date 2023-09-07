@@ -1,3 +1,25 @@
+@import '/css/var.css';
+
+@font-face {
+  font-family: 'Segment';
+  src: url('/font/Segment-Regular.otf');
+  font-weight: 400;
+}
+
+@font-face {
+  font-family: 'Segment';
+  src: url('/font/Segment-SemiBold.otf');
+  font-weight: 600;
+}
+
+@layer normalize, main, component, style;
+
+@layer style {
+  .card_button {
+    background: red;
+  }
+}
+
 @keyframes fly {
   from {
     top: 0;
@@ -25,36 +47,10 @@
 
   to {
     top: 0;
-    left:0;
+    left: 0;
 
     background: purple;
   }
-
-}
-
-
-:root {
-  --space-m: 12px;
-  --space-xm: 16px;
-  --space-l: 24px;
-  --space-b: 36px;
-
-  --size-s: 14px;
-  --size-d: 16px;
-  --size-l: 20px;
-
-  --color-border: #dee2e6;
-  --color-primary: rgb(63, 63, 239);
-  --color-white: #ffffff;
-  --color-title: #212529;
-  --color-text: #343a40;
-
-  --border-radius: 12px;
-
-  --weight-title: 500;
-  --weight-text: 400;
-
-  --page-width: 960px;
 }
 
 /* ====================== */
@@ -72,7 +68,6 @@
   display: flex;
   flex-direction: column;
   gap: 80px;
-  
 }
 
 /* ====================== */
@@ -225,25 +220,30 @@
   color: var(--color-text);
 }
 
-.button {
-  display: inline-block;
-  font-size: var(--size-d);
-  text-decoration: none;
-  padding: var(--space-m) var(--space-xm);
-  border-radius: var(--border-radius);
-  text-align: center;
+@layer main {
+  .button {
+    display: inline-block;
+    font-size: var(--size-d);
+    text-decoration: none;
+    padding: var(--space-m) var(--space-xm);
+    border-radius: var(--border-radius);
+    text-align: center;
 
-  transition: opacity 1s, background-color 1s;
+    transition: opacity 1s, background-color 1s;
+  }
+
+  .button:hover {
+    opacity: 0.7;
+    background-color: yellow;
+    color: red;
+  }
 }
 
-.card_button {
-  color: var(--color-white);
-  background-color: var(--color-primary);
-}
-
-.button:hover {
-  opacity: 0.7;
-  background-color: yellow;
+@layer component {
+  .card_button {
+    color: var(--color-white);
+    background-color: var(--color-primary);
+  }
 }
 
 .form {
@@ -339,7 +339,12 @@
 .modal {
   animation-name: fly;
   animation-duration: 4s;
-  animation-timing-function: cubic-bezier(0.92, 0, 0.91, 0.66);
+  animation-timing-function: cubic-bezier(
+    0.92,
+    0,
+    0.91,
+    0.66
+  );
   animation-delay: 3s;
   /* animation-iteration-count: infinite; */
   animation-direction: alternate;
@@ -379,4 +384,105 @@ body:hover .modal {
 
 :root {
   scroll-behavior: smooth;
+}
+
+.blog {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+}
+
+/* @media all and (min-width: 0px) and (max-width: 600px) {
+  .blog {
+    grid-template-columns: repeat(1, 1fr);
+  }
+} */
+
+/* @media not all and (min-width: 601px) and (max-width: 800px) {
+  .blog {
+    grid-template-columns: repeat(2, 1fr);
+  }
+} */
+
+/* @media all and (min-width: 601px) and (max-width: 800px),
+  all and (min-width: 1000px) {
+  .blog {
+    grid-template-columns: repeat(2, 1fr);
+  }
+} */
+
+/* @media all and (not (min-width: 800px)) {
+  .page_content {
+    background: red;
+  }
+} */
+
+/* @media all and (width < 600px) {
+  .blog {
+    grid-template-columns: repeat(1, 1fr);
+  }
+} */
+
+/* @media all and (width <= 600px) {
+  .blog {
+    grid-template-columns: repeat(1, 1fr);
+  }
+} */
+
+@media all and (600px < width <= 800px) {
+  .blog {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media all and (width <= 560px) {
+  .form {
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start;
+  }
+
+  .form_info {
+    max-width: 300px;
+    width: 100%;
+    line-height: 150%;
+  }
+
+  .form_content {
+    align-items: center;
+    text-align: center;
+  }
+}
+
+.hero_container {
+  container-type: inline-size;
+  container-name: hero;
+}
+
+@container hero (width < 960px) {
+  .hero {
+    flex-direction: column;
+  }
+}
+
+.ex {
+  display: inline-block;
+  font-size: 1.5em;
+  margin-left: 2ex;
+
+  line-height: 1.5em;
+}
+
+/* .test {
+  position: absolute;
+  background: red;
+  top: 0;
+  left: 0;
+
+  height: 100vmin;
+  width: 100vmin;
+  z-index: 9999;
+} */
+
+.hero_title {
+  font-size: 5cqw;
 }
